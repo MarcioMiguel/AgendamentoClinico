@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+@model Agendamento.Models.LoginViewModel
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <form asp-controller="Login" asp-action="Index" method="post">
+            <input asp-for="Email" type="text" class="fadeIn second" placeholder="E-mail">
+            <span asp-validation-for="Email" class="text-danger"></span>
+            <input asp-for="Senha" type="password" class="fadeIn third" placeholder="Senha">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+            <br />
+            <input type="submit" class="fadeIn fourth bgazul" value="Entrar">
+            <br />
+            <span class="text-danger">@ViewData["ErrorLogin"]</span>
+        </form>
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Esqueceu a senha?</a>
+        </div>
+    </div>
+</div>

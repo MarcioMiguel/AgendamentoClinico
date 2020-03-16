@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model Agendamento.Models.UsuarioViewModel
+}
+    <form asp-controller="Usuario" asp-action="Cadastro" method="post">
+        <div class="form-group d-none">
+            <label for="formGroupExampleInput">Código</label>
+            <input type="hidden" asp-for="Codigo" class="form-control" id="formGroupExampleInput" placeholder="Código" value="@Model.Codigo">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Nome</label>
+            <input type="text" asp-for="Nome" class="form-control" id="formGroupExampleInput2" placeholder="Nome" value="@Model.Nome">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">E-mail</label>
+            <input type="text" asp-for="Email" class="form-control" id="formGroupExampleInput2" placeholder="E-mail" value="@Model.Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Senha</label>
+            <input type="password" asp-for="Senha" class="form-control" id="formGroupExampleInput2" placeholder="Senha" value="@Model.Senha">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-info" onclick="Novo()">Novo</button>
+            <button type="submit" class="btn btn-success">Gravar</button>
+            <button type="button" class="btn btn-warning" onclick="Listagem()">Listagem</button>
+            <button type="button" class="btn btn-danger" onclick="Excluir(@Model.Codigo)">Excluir</button>
+        </div>
+    </form>
+
+<script>
+    function Novo() {
+        window.location = window.origin + "\\Usuario\\Cadastro\\";
+    }
+
+    function Listagem() {
+        window.location = window.origin + "\\Usuario\\";
+    }
+
+    function Excluir(codigo) {
+        window.location = window.origin + "\\Usuario\\Excluir\\" + codigo;
+    }
+
+</script>

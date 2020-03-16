@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @model Agendamento.Models.CidadeViewModel
+}
+<form asp-controller="Cidade" asp-action="Cadastro" method="post">
+    <div class="form-group d-none">
+        <label for="formGroupExampleInput">Código</label>
+        <input type="hidden" asp-for="Codigo" class="form-control" id="formGroupExampleInput" placeholder="IBGE" value="@Model.Codigo">        
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" id="formGroupExampleInput2" placeholder="Nome" value="@Model.Nome">
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">UF</label>
+        <select asp-for="UF" class="form-control input-group-lg" asp-items="@Model.ListaEstado"></select>
+        <span asp-validation-for="UF" class="text-danger"></span>
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-info" onclick="Novo()">Novo</button>
+        <button type="submit" class="btn btn-success">Gravar</button>
+        <button type="button" class="btn btn-warning" onclick="Listagem()">Listagem</button>
+        <button type="button" class="btn btn-danger" onclick="Excluir(@Model.Codigo)">Excluir</button>
+    </div>
+</form>
+
+<script>
+    function Novo() {
+        window.location = window.origin + "\\Cidade\\Cadastro\\";
+    }
+
+    function Listagem() {
+        window.location = window.origin + "\\Cidade\\";
+    }
+
+    function Excluir(codigo) {
+        window.location = window.origin + "\\Cidade\\Excluir\\" + codigo;
+    }
+
+</script>
